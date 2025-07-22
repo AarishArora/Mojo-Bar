@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, halloween;
+  }
+
+@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.scroll-inner {
+  display: inline-block;
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
+}
+
+  .text-stroke {
+    -webkit-text-stroke: 2px black; /* thickness and color */
+    color: transparent; /* makes the fill invisible if you want only stroke */
+  }
+  .text-stroke2 {
+    text-shadow: 1px 1px 1px black;
+  }
