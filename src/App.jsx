@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
@@ -9,15 +10,19 @@ import Best_Seller from './components/Best_Seller'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Best_Seller />
-      <Products />
-      {/* <SingleProductPage /> */}
-      {/* <ProductPage /> */}
-      <Footer />
-    </div>
+    <Router>
+        <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<SingleProductPage />} />
+        <Route path="/product-page" element={<ProductPage />} />
+        
+        {/* <SingleProductPage /> */}
+        {/* <ProductPage /> */}
+      </Routes>
+        <Best_Seller />
+        <Footer />
+    </Router>
   )
 }
 

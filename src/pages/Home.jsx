@@ -7,7 +7,7 @@ import InfiniteScrollText from '../components/InfiniteScrollText';
 
 const Home = () => {
   return (
-    <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-28">
+    <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-25 scroll-smooth ">
       
       <InfiniteScrollText />
       <div className="hidden md:block w-[300px] -rotate-3 ml-2">
