@@ -7,10 +7,12 @@ import Products from './pages/Products'
 import ProductPage from './pages/ProductPage'
 import SingleProductPage from './pages/SingleProductPage'
 import Best_Seller from './components/Best_Seller'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
         <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,8 +22,8 @@ const App = () => {
         {/* <SingleProductPage /> */}
         {/* <ProductPage /> */}
       </Routes>
-        <Best_Seller />
-        <Footer />
+        {/* <Best_Seller /> */}
+        {/* <Footer /> */}
     </Router>
   )
 }
