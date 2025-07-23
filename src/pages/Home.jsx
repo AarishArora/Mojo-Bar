@@ -1,12 +1,19 @@
 
 import { motion } from 'framer-motion';
 import InfiniteScrollText from '../components/InfiniteScrollText';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import Best_Seller from '../components/Best_Seller';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
+    <>
+    <Navbar />
     <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-25 scroll-smooth ">
       
       <InfiniteScrollText />
@@ -39,10 +46,13 @@ const Home = () => {
       <div className="max-w-xl z-10 ">
         <h1 className="text-5xl font-bold leading-tight text-stroke2">Fuel Your Day<br />With <span className="text-primary">Energy Bars...</span></h1>
         <p className="mt-6 text-lg text-gray-600">India’s leading protein snack brand with delicious flavours & powerful nutrition.</p>
-        <button className="btn btn-primary mt-8">Explore Products</button>
+        <button className="btn btn-primary mt-8" onClick={() => navigate('/product-page')}>Explore Products</button>
       </div>
       
     </section>
+    <Best_Seller />
+    <Footer />
+    </>
   );
 };
 

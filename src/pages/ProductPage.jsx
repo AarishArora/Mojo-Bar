@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Dummy product data
 const allProducts = [
@@ -46,6 +48,8 @@ const ProductPage = () => {
       : allProducts.filter((product) => product.category === activeCategory);
 
   return (
+    <>
+    <Navbar />
     <div className="p-6 max-w-7xl mx-auto pt-28">
       <h2 className="text-3xl font-bold mb-6 text-center">Our Products</h2>
 
@@ -66,7 +70,7 @@ const ProductPage = () => {
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredProducts.map((product) => (
-          <div key={product.id} className="card bg-neutral shadow-xl">
+          <div key={product.id} className="card bg-base-200 shadow-xl">
             <figure className="p-4 ">
               <div className="w-full h-48 object-contain">
                 <img src={product.image} alt={product.name} className="w-full h-full object-contain " />
@@ -91,6 +95,8 @@ const ProductPage = () => {
         <div className="text-center text-gray-500 mt-10">No products found in this category.</div>
       )}
     </div>
+    <Footer />
+    </>
   );
 };
 

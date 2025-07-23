@@ -224,6 +224,34 @@ const SingleProductPage = () => {
   const { id } = useParams();
   const product = allProducts.find((product) => product.id === parseInt(id));
 
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0], // or however you're storing image
+      quantity: quantity,       // assume you have a `quantity` state
+    };
+  
+    // Get existing cart from localStorage or initialize an empty array
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Check if the product already exists in the cart
+    const index = existingCart.findIndex(item => item.id === cartItem.id);
+  
+    if (index > -1) {
+      // If it exists, just update the quantity
+      existingCart[index].quantity += cartItem.quantity;
+    } else {
+      // Otherwise, add it to cart
+      existingCart.push(cartItem);
+    }
+  
+    localStorage.setItem('cart', JSON.stringify(existingCart));
+    alert("Item added to cart!");
+  };
+  
+
   return (
     <div className="flex flex-col md:flex-row h-screen overflow-hidden pt-11 scroll-smooth">
       {/* Left fixed carousel panel */}
@@ -281,7 +309,7 @@ const SingleProductPage = () => {
         {/* Action Buttons */}
         <div className="flex gap-4 mt-4">
           <button className="btn btn-primary">Buy Now</button>
-          <button className="btn btn-outline bg-transparent hover:bg-accent text-white btn-secondary">
+          <button className="btn btn-outline bg-transparent hover:bg-accent text-white btn-secondary" onClick={handleAddToCart}>
             Add to Cart
           </button>
         </div>

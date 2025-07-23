@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
-      // alert('Login successful');
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate('/'); 
     } catch (error) {
       alert(error.message);
     }
@@ -25,9 +23,9 @@ const Login = () => {
     <>
     <Navbar />
     <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
-      <div className="bg-base-200 outline-1 shadow-2xl rounded-2xl p-8 max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">Login to Your Account</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
+      <div className="bg-base-200 shadow-2xl outline-1 rounded-2xl p-8 max-w-md w-full">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Create an Account</h2>
+        <form onSubmit={handleSignUp} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-white">Email</label>
             <input
@@ -35,7 +33,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-base-100 mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="bg-base-100 mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               placeholder="Enter your email"
             />
           </div>
@@ -46,21 +44,21 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="bg-base-100 mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Enter your password"
+              className="bg-base-100 mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+              placeholder="Create a password"
             />
           </div>
           <button
             type="submit"
-            className="w-full btn btn-primary text-white py-3 rounded-lg transition duration-200"
+            className="w-full btn btn-secondary text-white py-3 rounded-lg transition duration-200"
           >
-            Login
+            Sign Up
           </button>
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
-          New user?{' '}
-          <a href="/signup" className="text-blue-600 font-semibold hover:underline">
-            Create an account
+          Already have an account?{' '}
+          <a href="/login" className="text-blue-600 font-semibold hover:underline">
+            Login here
           </a>
         </p>
       </div>
@@ -70,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
