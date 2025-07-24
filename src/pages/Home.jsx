@@ -1,57 +1,213 @@
+import { motion, AnimatePresence } from "framer-motion";
+import InfiniteScrollText from "../components/InfiniteScrollText";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Best_Seller from "../components/Best_Seller";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import proteinBar from "../assets/Hero bar.png";
+import ScrollRevealProducts from "../components/ScrollRevealProducts";
 
-import { motion } from 'framer-motion';
-import InfiniteScrollText from '../components/InfiniteScrollText';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import Best_Seller from '../components/Best_Seller';
-import { useNavigate } from 'react-router-dom';
-
-
-
+const heroContent = [
+  {
+    image: "./src/assets/Hero bar.png",
+    spanText: "Energy Bars...",
+    spanColor: "text-primary",
+    btnShadow: "hover:shadow-[0_0_25px_#f59e0b]",
+    link: "/product-page/:3",
+  },
+  {
+    image: "./src/assets/Hero pack.png",
+    spanText: "Protein Bomb!",
+    spanColor: "text-secondary",
+    btnShadow: "hover:shadow-[0_0_25px_#9333ea]",
+    link: "/product-choco",
+  },
+  {
+    image: "./src/assets/Hero dark.png",
+    spanText: "Mint Chocolate!",
+    spanColor: "text-accent",
+    btnShadow: "hover:shadow-[0_0_25px_#10b981]",
+    link: "/product-peanut",
+  },
+];
 
 const Home = () => {
   const navigate = useNavigate();
+  const [index, setIndex] = useState(0);
+
+  // Change every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % heroContent.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const current = heroContent[index];
+
+  const [showImage, setShowImage] = useState(false);
+  const animationRef = useRef(null);
+
+  // Trigger image show after bomb animation
+  useEffect(() => {
+    setShowImage(false); // Reset image before new bomb
+  }, [index]);
+
+  const handleBombComplete = () => {
+    setShowImage(true); // Show image after bomb animation
+  };
+
   return (
     <>
-    <Navbar />
-    <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-25 scroll-smooth ">
-      
-      <InfiniteScrollText />
-      <div className="hidden md:block w-[300px] -rotate-3 ml-2">
-        {/* <img src="./src/assets/Hero bar.png" alt="Max Protein Jar" /> */}
-        {/* <motion.img
-          src="./src/assets/Hero bar.png"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        /> */}
+      <Navbar />
+      <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-25 scroll-smooth ">
+        <InfiniteScrollText />
+
+        <div className="hidden md:block w-[300px] -rotate-3 ml-2">
+          <AnimatePresence mode="wait">
+            <motion.div
+              className="mt-10 md:mt-0 relative"
+              key={current.image}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.img
+                src={current.image}
+                alt="Mojo Product"
+                className="w-[300px] md:w-[400px] h-[300px] md:h-[400px] object-cover"
+                whileHover={{
+                  rotate: [0, -20, 20, -10, 10, 0], // Shaking motion
+                  transition: { duration: 0.6, ease: "easeInOut" },
+                }}
+              />
+              {/* <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
+                <DotLottieReact
+                  key={current.image} // forces remount to replay animation
+                  src="./public/Boom.lottie" // update this to your actual path
+                  autoplay
+                  loop={false}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div> */}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="max-w-xl z-10 ">
+          <h1 className="text-5xl font-bold leading-tight text-stroke2">
+            Fuel Your Day
+            <br />
+            With{" "}
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={current.spanText}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
+                className={current.spanColor}
+              >
+                {current.spanText}
+              </motion.span>
+            </AnimatePresence>
+          </h1>
+          <p className="mt-6 text-lg text-gray-500">
+            India’s leading protein snack brand with delicious flavours &
+            powerful nutrition.
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className={`btn btn-primary mt-8 shadow-[0_0_10px_rgba(0,0,0,0.2)] ${current.btnShadow} transition-shadow`}
+            onClick={() => navigate(current.link)}
+          >
+            Explore Products
+          </motion.button>
+        </div>
+      </section>
+
+      <div className="bg-base-100 py-16 px-16 md:px-20 text-white">
+        <hr className="my-10 mt-20 border-white px-16" />
         <motion.div
-        className="mt-10 md:mt-0"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.img
-          src="./src/assets/Hero bar.png"
-          alt="Max Protein Jar"
-          className="w-[300px] md:w-[400px]"
-          whileHover={{
-            rotate: [0, -20, 20, -10, 10, 0],  // Shaking motion
-            transition: { duration: 0.6, ease: "easeInOut" }
-          }}
-        />
-      </motion.div>
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center"
+        >
+          {[
+            {
+              title: "Best price",
+              desc: "Guaranteed the best price on the market, significantly increasing revenue.",
+            },
+            {
+              title: "Efficiency",
+              desc: "Facilities allow up to 5,000,000 bars/month production.",
+            },
+            {
+              title: "Reliability",
+              desc: "Certified production as per federal network requirements.",
+            },
+            {
+              title: "Range",
+              desc: "52 SKU bars for all price segments with unique recipes.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className=" p-4 rounded-xl shadow-md bg-gradient-to-b from-primary to-secondary hover:scale-105 transition-all"
+            >
+              <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+              <p className="text-sm text-white">{item.desc}</p>
+            </div>
+          ))}
+        </motion.div>
+        <hr className="my-10 mb-20 border-white px-16" />
+
+        <Best_Seller />
+        <div className="mt-20 ">
+          <motion.h2
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-white"
+          >
+            Our Categories
+          </motion.h2>
+
+          <div className="text-center mb-12">
+            <p className="text-yellow-500 font-semibold text-xl mb-2">
+              Eat Healthy
+            </p>
+            <p className="text-white max-w-2xl mx-auto text-sm">
+              Healthy product for sport nutrition that helps maintain normal
+              protein and carb levels. Includes collagen and prebiotics for
+              proper recovery.
+            </p>
+          </div>
+
+          <ScrollRevealProducts />
+        </div>
       </div>
-      
-      <div className="max-w-xl z-10 ">
-        <h1 className="text-5xl font-bold leading-tight text-stroke2">Fuel Your Day<br />With <span className="text-primary">Energy Bars...</span></h1>
-        <p className="mt-6 text-lg text-gray-600">India’s leading protein snack brand with delicious flavours & powerful nutrition.</p>
-        <button className="btn btn-primary mt-8" onClick={() => navigate('/product-page')}>Explore Products</button>
-      </div>
-      
-    </section>
-    <Best_Seller />
-    <Footer />
+      <section className="bg-base-200 py-20 px-6 md:px-16">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            What do we stand for?
+          </h2>
+          <p className="text-sm md:text-lg text-gray-500 leading-relaxed">
+          When the world was busy making unhealthy snacking seem healthy, we decided to swim against the tide. We quit our jobs to create a smarter, better-for-you snack packed with research, not junk.
+            <br className="hidden md:block" />
+            We keep it clean, we keep it honest, and we make nutrition fun!
+          </p>
+        </div>
+      </section>
+
+      <Footer />
     </>
   );
 };

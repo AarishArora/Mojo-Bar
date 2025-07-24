@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
     <Navbar />
-    <div className="min-h-screen bg-neutral py-16 px-4 pt-24">
+    <div className="min-h-screen bg-base-100 py-16 px-4 pt-24">
       <div className="max-w-4xl mx-auto bg-base-200 rounded-xl shadow-lg p-8">
         {/* Header */}
         <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>

@@ -3,7 +3,21 @@ export const content = ["./**/*.{html,js}"];
 export const theme = {
     extend: {},
 };
-export const plugins = [require("daisyui")];
+export const plugins = [require("daisyui"),
+    function ({ addUtilities }) {
+        addUtilities({
+          '.no-scrollbar': {
+            /* Chrome, Safari and Opera */
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            /* IE, Edge and Firefox */
+            '-ms-overflow-style': 'none',
+            'scrollbar-width': 'none',
+          },
+        });
+      },
+];
 export const daisyui = {
     themes: [
         {
