@@ -1,12 +1,11 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCXeeGLxVbySekJiguEFw6jq1EH3pd_1Ic",
-  authDomain: "mojo-bar.firebaseapp.com",
-  projectId: "mojo-bar",
-  appId: "1:854638267540:web:c07e603a245b54a01c3881",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
