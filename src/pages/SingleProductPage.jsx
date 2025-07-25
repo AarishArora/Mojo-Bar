@@ -42,7 +42,7 @@ import GreenBomb1 from "/src/assets/Protein_bomb_green_3d.webp";
 import GreenBomb2 from "/src/assets/Protein_bomb_green_hover.webp";
 import GreenBomb3 from "/src/assets/Why_bomb_green.webp";
 import PurpleBomb1 from "/src/assets/Hero pack.webp";
-import PurpleBomb2 from "/src/assets/Protein_bomb_hover.webp";
+import PurpleBomb2 from "/src/assets/protein_bomb_hover.webp";
 import PurpleBomb3 from "/src/assets/Why_bomb_purple.webp";
 
 import Sattu1 from "/src/assets/Sattu_3d.webp";
