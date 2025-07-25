@@ -8,6 +8,11 @@
     themes: light --default, dark --prefersdark, halloween;
   }
 
+:root {
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
 @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -43,8 +48,19 @@
     display: none;
   }
   
-  body {
+  body, html {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
   }
+
+
+  h1, h2, .hero-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+  body, p, .text-base {
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+  
 

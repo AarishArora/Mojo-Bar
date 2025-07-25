@@ -4,55 +4,80 @@ import { Navigation } from "swiper/modules";
 import { useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
+import Navbar from "../components/Navbar";
+import { motion } from "framer-motion";
 
-import AllBars1 from "/src/assets/All bars.png";
-import AllBars2 from "/src/assets/Set6_hover.jpg";
-import AllBars3 from "/src/assets/All_bars_side.jpg";
-import BarPack1 from "/src/assets/Combo_bar_pack6.png";
-import BarPack2 from "/src/assets/Bar_combo_hover.png";
-import BarPack3 from "/src/assets/Combo_bar_hover.png";
-import ChocoBar1 from "/src/assets/Choco_bar_pack.jpg";
-import ChocoBar2 from "/src/assets/Choco_bar_side.jpg";
-import ChocoBar3 from "/src/assets/choco_bar_back.jpg";
-import OrangeBar1 from "/src/assets/OrangeDarkChocolate_pack.png";
-import OrangeBar2 from "/src/assets/Orange_bar_back.jpg";
-import OrangeBar3 from "/src/assets/Orange_bar_side.jpg";
-import PinkBar1 from "/src/assets/Pink_pack.png";
-import PinkBar2 from "/src/assets/Pink_bar_pack_side.jpg";
-import PinkBar3 from "/src/assets/Pink_bar_back.jpg";
-import YellowBar1 from "/src/assets/Yellow_pack.png";
-import YellowBar2 from "/src/assets/Yellow_bar.png";
-import YellowBar3 from "/src/assets/Yellow_pack_hover.jpg";
-import PeanutBar1 from "/src/assets/peanut_bar.png";
-import PeanutBar2 from "/src/assets/Peanut_bar_ing.png";
-import PeanutBar3 from "/src/assets/peanut_bar_hover.png";
-import YoghurtBar1 from "/src/assets/Yoghurt_bar.png";
-import YoghurtBar2 from "/src/assets/Yoghurt_bar_ing.jpg";
-import YoghurtBar3 from "/src/assets/Yoghurt_bar_hover.jpg";
+import AllBars1 from "/src/assets/All bars_3d.webp";
+import AllBars2 from "/src/assets/Set6_hover.webp";
+import AllBars3 from "/src/assets/All_bars_side.webp";
+import BarPack1 from "/src/assets/Combo_bar_pack6.webp";
+import BarPack2 from "/src/assets/Bar_combo_hover.webp";
+import BarPack3 from "/src/assets/Combo_bar_hover.webp";
+import ChocoBar1 from "/src/assets/bar box 1.webp";
+import ChocoBar2 from "/src/assets/Choco_bar_side.webp";
+import ChocoBar3 from "/src/assets/choco_bar_back.webp";
+import OrangeBar1 from "/src/assets/OrangeDarkChocolate_pack.webp";
+import OrangeBar2 from "/src/assets/Orange_bar_back.webp";
+import OrangeBar3 from "/src/assets/Orange_bar_side.webp";
+import PinkBar1 from "/src/assets/Pink_pack.webp";
+import PinkBar2 from "/src/assets/Pink_bar_pack_side.webp";
+import PinkBar3 from "/src/assets/Pink_bar_back.webp";
+import YellowBar1 from "/src/assets/Yellow_pack.webp";
+import YellowBar2 from "/src/assets/Yellow_bar.webp";
+import YellowBar3 from "/src/assets/Yellow_pack_hover.webp";
+import PeanutBar1 from "/src/assets/peanut_bar_png.webp";
+import PeanutBar2 from "/src/assets/Peanut_bar_ing.webp";
+import PeanutBar3 from "/src/assets/peanut_bar_hover.webp";
+import YoghurtBar1 from "/src/assets/Yoghurt_bar_png.webp";
+import YoghurtBar2 from "/src/assets/Yoghurt_bar_ing.webp";
+import YoghurtBar3 from "/src/assets/Yoghurt_bar_hover.webp";
 
-import BombPack1 from "/src/assets/Protein_bomb3.png";
-import BombPack2 from "/src/assets/Protein_bomb3_hover.png";
+import BombPack1 from "/src/assets/Protein_bomb3d.webp";
+import BombPack2 from "/src/assets/Protein_bomb3_hover.webp";
 import BombPack3 from "/src/assets/Bomb Pack2.webp";
-import OrangeBomb1 from "/src/assets/Protein_bomb_orange.png";
-import OrangeBomb2 from "/src/assets/Protein_bomb_orange_hover.png";
-import OrangeBomb3 from "/src/assets/Why_bomb_orange.png";
-import GreenBomb1 from "/src/assets/Protein_bomb_green.png";
-import GreenBomb2 from "/src/assets/Protein_bomb_green_hover.png";
-import GreenBomb3 from "/src/assets/Why_bomb_green.png";
-import PurpleBomb1 from "/src/assets/Protein_bomb.png";
-import PurpleBomb2 from "/src/assets/Protein_bomb_hover.png";
-import PurpleBomb3 from "/src/assets/Why_bomb_purple.png";
+import OrangeBomb1 from "/src/assets/Protein_bomb_orange_3d.webp";
+import OrangeBomb2 from "/src/assets/Protein_bomb_orange_hover.webp";
+import OrangeBomb3 from "/src/assets/Why_bomb_orange.webp";
+import GreenBomb1 from "/src/assets/Protein_bomb_green_3d.webp";
+import GreenBomb2 from "/src/assets/Protein_bomb_green_hover.webp";
+import GreenBomb3 from "/src/assets/Why_bomb_green.webp";
+import PurpleBomb1 from "/src/assets/Hero pack.webp";
+import PurpleBomb2 from "/src/assets/Protein_bomb_hover.webp";
+import PurpleBomb3 from "/src/assets/Why_bomb_purple.webp";
 
-import Sattu1 from "/src/assets/Sattu.png";
-import Sattu2 from "/src/assets/Sattu_back.png";
-import Sattu3 from "/src/assets/Sattu_hover.png";
+import Sattu1 from "/src/assets/Sattu_3d.webp";
+import Sattu2 from "/src/assets/Sattu_back.webp";
+import Sattu3 from "/src/assets/Sattu_hover.webp";
 
-import MintThin1 from "/src/assets/Mildly_chocolate.png";
-import MintThin2 from "/src/assets/Mint_thins_hover.png";
-import MintThin3 from "/src/assets/Why_mojo_thins.jpg";
-import MintSF1 from "/src/assets/Mint_SF.jpg";
-import MintSF2 from "/src/assets/Sugar_free_thins_hover.png";
-import MintSF3 from "/src/assets/Why_mojo_thins.jpg";
+import MintThin1 from "/src/assets/Hero dark.webp";
+import MintThin2 from "/src/assets/Mint_thins_hover.webp";
+import MintThin3 from "/src/assets/Why_mojo_thins.webp";
+import MintSF1 from "/src/assets/Mint_SF_3d.webp";
+import MintSF2 from "/src/assets/Sugar_free_thins_hover.webp";
+import MintSF3 from "/src/assets/Why_mojo_thins.webp";
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4,
+      ease: "easeIn",
+    },
+  },
+};
 
 const allProducts = [
   {
@@ -60,7 +85,7 @@ const allProducts = [
     name: "Easy Combo of 12 Energy bars (Choco Almond, Fruit & Nut, Yoghurt Berry & Orange Dark Chocolate), 384g",
     category: "Bars",
     image: { AllBars1 },
-    price: 580.00,
+    price: 580.0,
     description:
       "MOJO Bar is a Protein & Fibre Rich SMART snack for the calorie conscious.",
     images: [AllBars1, AllBars2, AllBars3],
@@ -71,7 +96,7 @@ const allProducts = [
     name: "Assorted Pack of 6, 192g (Choco Almond, Yoghurt Berry & Nutty Apricot)",
     category: "Bars",
     image: { BarPack1 },
-    price: 300.00,
+    price: 300.0,
     description:
       "Choco Almond + Protein - The classic combination of chocolate and almond has stood the test of time. These two have been innovated and experimented with through the years and have always\n \nNutty Apricot + Fibre - Whether in school, in college or at work, one thing that we're all familiar with is the little box of dry fruits that is a part of all packed lunches.\n\nYoghurt Berry + Anti-Oxidants - As Indians (whose mothers strongly believe that ‘Dahi’ is the solution to most things) we have grown up with yoghurt and developed a special relationship with it. It’s our go-to comfort food and of course very healthy.",
     images: [BarPack1, BarPack2, BarPack3],
@@ -212,10 +237,7 @@ const allProducts = [
   },
 ];
 
-
-
 const SingleProductPage = () => {
-
   const [quantity, setQuantity] = useState(1);
 
   const increment = () => setQuantity((prev) => prev + 1);
@@ -230,15 +252,15 @@ const SingleProductPage = () => {
       name: product.name,
       price: product.price,
       image: product.images[0], // or however you're storing image
-      quantity: quantity,       // assume you have a `quantity` state
+      quantity: quantity, // assume you have a `quantity` state
     };
-  
+
     // Get existing cart from localStorage or initialize an empty array
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-  
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
     // Check if the product already exists in the cart
-    const index = existingCart.findIndex(item => item.id === cartItem.id);
-  
+    const index = existingCart.findIndex((item) => item.id === cartItem.id);
+
     if (index > -1) {
       // If it exists, just update the quantity
       existingCart[index].quantity += cartItem.quantity;
@@ -246,92 +268,111 @@ const SingleProductPage = () => {
       // Otherwise, add it to cart
       existingCart.push(cartItem);
     }
-  
-    localStorage.setItem('cart', JSON.stringify(existingCart));
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
     alert("Item added to cart!");
   };
-  
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden pt-11 scroll-smooth">
-      {/* Left fixed carousel panel */}
-      <div className="md:w-1/2 bg-base-100 p-6 md:sticky top-0 h-[300px] md:h-screen grid place-items-center select-none">
-        <div className="w-full max-w-sm h-auto ">
-          <Swiper
-            direction="horizontal"
-            slidesPerView={1}
-            spaceBetween={20}
-            navigation
-            modules={[Navigation]}
-            className=" w-full"
-          >
-            {product.images.map((src, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex justify-center items-center"
+    <>
+      <motion.div
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="min-h-screen w-full"
+      >
+        <Navbar />
+        <div className="flex flex-col md:flex-row h-screen overflow-hidden pt-11 scroll-smooth">
+          {/* Left fixed carousel panel */}
+          {/* <div className="md:w-1/2 bg-base-100 p-6 md:sticky top-0 h-[300px] md:h-screen grid place-items-center select-none"> */}
+          <div className="md:w-1/2 bg-base-100 p-6 md:sticky top-0 h-[50vh] md:h-screen grid place-items-center select-none">
+            {/* <div className="w-full max-w-sm h-auto "> */}
+            <div className="w-full max-w-xs sm:max-w-sm h-auto px-2">
+              <Swiper
+                direction="horizontal"
+                slidesPerView={1}
+                spaceBetween={20}
+                navigation
+                modules={[Navigation]}
+                className=" w-full"
               >
-                <img
-                  src={src}
-                  alt={`Product ${index + 1}`}
-                  className="max-w-full max-h-[475px] object-contain rounded-xl bg-base-100"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
+                {product.images.map((src, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className="flex justify-center items-center"
+                  >
+                    <img
+                      src={src}
+                      alt={`Product ${index + 1}`}
+                      className="w-full max-h-[300px] md:max-h-[475px] object-contain rounded-xl  bg-white"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
 
-      {/* Right scrollable details */}
-      <div className="md:w-1/2 overflow-y-auto p-6 space-y-6">
-        <h1 className="text-3xl font-bold">{product.name}</h1>
-        <p className="text-lg text-gray-600">Category: {product.category}</p>
-        <div className="badge badge-success">In Stock</div>
-        <p className="mt-4 text-gray-700">{product.description}</p>
-        <div className="text-2xl font-semibold text-primary mt-4">
-          ₹{(product.price).toFixed(2)}
+          {/* Right scrollable details */}
+          <div className="md:w-1/2 overflow-y-auto p-6 space-y-6">
+            <h1 className="text-3xl font-bold">{product.name}</h1>
+            <p className="text-lg text-gray-600">
+              Category: {product.category}
+            </p>
+            <div className="badge badge-success">In Stock</div>
+            <p className="mt-4 text-gray-400">{product.description}</p>
+            <div className="text-2xl font-semibold text-primary mt-4">
+              ₹{product.price.toFixed(2)}
+            </div>
+            {/* Quantity Selector */}
+            <div className="flex items-center gap-0.5 mt-6 justify-start">
+              <button
+                onClick={decrement}
+                className="btn btn-outline btn-sm rounded-xl text-xl bg-white text-black"
+              >
+                -
+              </button>
+              <span className="text-lg font-medium bg-white px-4 py-0.5 rounded text-black">
+                {quantity}
+              </span>
+              <button
+                onClick={increment}
+                className="btn bg-white text-black btn-sm rounded-xl text-xl"
+              >
+                +
+              </button>
+            </div>
+            {/* Action Buttons */}
+            <div className="flex gap-4 mt-4">
+              <button className="btn btn-primary">Buy Now</button>
+              <button
+                className="btn btn-outline bg-transparent hover:bg-accent text-white btn-secondary"
+                onClick={handleAddToCart}
+              >
+                Add to Cart
+              </button>
+            </div>
+            <hr className="my-6" />
+            <div>
+              <h2 className="text-xl font-semibold mb-2">Nutritional Info</h2>
+              <ul className="list-disc ml-6 space-y-1 text-gray-400">
+                <li>Protein: 20g</li>
+                <li>Fiber: 5g</li>
+                <li>Sugar: 0g added</li>
+                <li>Calories: 230 kcal</li>
+              </ul>
+            </div>
+            <div className="mt-10">
+              <h2 className="text-xl font-semibold mb-2">Customer Reviews</h2>
+              <p className="text-gray-600 italic">
+                ⭐️⭐️⭐️⭐️⭐️ “Tastes amazing and super healthy!”
+              </p>
+            </div>
+            <div className="h-32" /> {/* Extra space for scroll */}
+          </div>
         </div>
-        {/* Quantity Selector */}
-        <div className="flex items-center gap-0.5 mt-6 justify-start">
-          <button
-            onClick={decrement}
-            className="btn btn-outline btn-sm rounded-xl text-xl bg-white text-black"
-          >
-            -
-          </button>
-          <span className="text-lg font-medium bg-white px-4 py-0.5 rounded text-black">{quantity}</span>
-          <button
-            onClick={increment}
-            className="btn bg-white text-black btn-sm rounded-xl text-xl"
-          >
-            +
-          </button>
-        </div>
-        {/* Action Buttons */}
-        <div className="flex gap-4 mt-4">
-          <button className="btn btn-primary">Buy Now</button>
-          <button className="btn btn-outline bg-transparent hover:bg-accent text-white btn-secondary" onClick={handleAddToCart}>
-            Add to Cart
-          </button>
-        </div>
-        <hr className="my-6" />
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Nutritional Info</h2>
-          <ul className="list-disc ml-6 space-y-1 text-gray-700">
-            <li>Protein: 20g</li>
-            <li>Fiber: 5g</li>
-            <li>Sugar: 0g added</li>
-            <li>Calories: 230 kcal</li>
-          </ul>
-        </div>
-        <div className="mt-10">
-          <h2 className="text-xl font-semibold mb-2">Customer Reviews</h2>
-          <p className="text-gray-600 italic">
-            ⭐️⭐️⭐️⭐️⭐️ “Tastes amazing and super healthy!”
-          </p>
-        </div>
-        <div className="h-32" /> {/* Extra space for scroll */}
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 };
 

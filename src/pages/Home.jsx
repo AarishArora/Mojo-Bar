@@ -5,32 +5,56 @@ import Navbar from "../components/Navbar";
 import Best_Seller from "../components/Best_Seller";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import proteinBar from "../assets/Hero bar.png";
+import proteinBar from "../assets/Hero bar.webp";
 import ScrollRevealProducts from "../components/ScrollRevealProducts";
+import BackgroundLottie from "../components/BackgroundLottie";
 
 const heroContent = [
   {
-    image: "./src/assets/Hero bar.png",
+    image: "./src/assets/Hero bar.webp",
     spanText: "Energy Bars...",
     spanColor: "text-primary",
     btnShadow: "hover:shadow-[0_0_25px_#f59e0b]",
-    link: "/product-page/:3",
+    link: "/product/4",
   },
   {
-    image: "./src/assets/Hero pack.png",
+    image: "./src/assets/Hero pack.webp",
     spanText: "Protein Bomb!",
     spanColor: "text-secondary",
     btnShadow: "hover:shadow-[0_0_25px_#9333ea]",
-    link: "/product-choco",
+    link: "/product/11",
   },
   {
-    image: "./src/assets/Hero dark.png",
+    image: "./src/assets/Hero dark.webp",
     spanText: "Mint Chocolate!",
     spanColor: "text-accent",
     btnShadow: "hover:shadow-[0_0_25px_#10b981]",
-    link: "/product-peanut",
+    link: "/product/13",
   },
 ];
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4,
+      ease: "easeIn",
+    },
+  },
+};
 
 const Home = () => {
   const navigate = useNavigate();
@@ -60,11 +84,20 @@ const Home = () => {
 
   return (
     <>
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen w-full"
+    >
       <Navbar />
-      <section className="relative overflow-hidden min-h-screen bg-base-100 flex items-center justify-between px-10 pt-25 scroll-smooth ">
+      <section className="relative overflow-hidden min-h-screen bg-base-100 flex flex-col md:flex-row items-center justify-between px-10 pt-18 md:pt-25 scroll-smooth ">
         <InfiniteScrollText />
+        <BackgroundLottie />
 
-        <div className="hidden md:block w-[300px] -rotate-3 ml-2">
+        <div className="mr-4 block w-[225px] md:w-[300px] -rotate-3 ">
+        
           <AnimatePresence mode="wait">
             <motion.div
               className="mt-10 md:mt-0 relative"
@@ -82,22 +115,14 @@ const Home = () => {
                   transition: { duration: 0.6, ease: "easeInOut" },
                 }}
               />
-              {/* <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
-                <DotLottieReact
-                  key={current.image} // forces remount to replay animation
-                  src="./public/Boom.lottie" // update this to your actual path
-                  autoplay
-                  loop={false}
-                  style={{ width: "100%", height: "100%" }}
-                />
-              </div> */}
+              
             </motion.div>
           </AnimatePresence>
         </div>
 
         <div className="max-w-xl z-10 ">
           <h1 className="text-5xl font-bold leading-tight text-stroke2">
-            Fuel Your Day
+            Snack smart 
             <br />
             With{" "}
             <AnimatePresence mode="wait">
@@ -125,12 +150,12 @@ const Home = () => {
             className={`btn btn-primary mt-8 shadow-[0_0_10px_rgba(0,0,0,0.2)] ${current.btnShadow} transition-shadow`}
             onClick={() => navigate(current.link)}
           >
-            Explore Products
+            Explore Product
           </motion.button>
         </div>
       </section>
 
-      <div className="bg-base-100 py-16 px-16 md:px-20 text-white">
+      <div className="bg-base-100 py-16 px-16 md:px-20 text-white md:mx-10">
         <hr className="my-10 mt-20 border-white px-16" />
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -146,7 +171,7 @@ const Home = () => {
             },
             {
               title: "Efficiency",
-              desc: "Facilities allow up to 5,000,000 bars/month production.",
+              desc: "Facilities allow up to 5,000,000 products/month production.",
             },
             {
               title: "Reliability",
@@ -154,12 +179,12 @@ const Home = () => {
             },
             {
               title: "Range",
-              desc: "52 SKU bars for all price segments with unique recipes.",
+              desc: "products for all price segments with unique recipes.",
             },
           ].map((item, i) => (
             <div
               key={i}
-              className=" p-4 rounded-xl shadow-md bg-gradient-to-b from-primary to-secondary hover:scale-105 transition-all"
+              className=" p-4 rounded-xl shadow-md  hover:scale-105 transition-all"
             >
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>
               <p className="text-sm text-white">{item.desc}</p>
@@ -199,7 +224,7 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             What do we stand for?
           </h2>
-          <p className="text-sm md:text-lg text-gray-500 leading-relaxed">
+          <p className="text-sm md:text-base text-gray-500 leading-relaxed md:px-10">
           When the world was busy making unhealthy snacking seem healthy, we decided to swim against the tide. We quit our jobs to create a smarter, better-for-you snack packed with research, not junk.
             <br className="hidden md:block" />
             We keep it clean, we keep it honest, and we make nutrition fun!
@@ -208,6 +233,7 @@ const Home = () => {
       </section>
 
       <Footer />
+      </motion.div>
     </>
   );
 };

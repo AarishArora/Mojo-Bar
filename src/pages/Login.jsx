@@ -4,6 +4,31 @@ import { auth } from '../../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import BackgroundLottie from '../components/BackgroundLottie';
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4,
+      ease: "easeIn",
+    },
+  },
+};
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,9 +48,17 @@ const Login = () => {
 
   return (
     <>
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen w-full"
+    >
     <Navbar />
-    <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
-      <div className="bg-base-200 outline-1 shadow-2xl rounded-2xl p-8 max-w-md w-full">
+    <BackgroundLottie />
+    <div className="min-h-screen flex items-center justify-center bg-base-100 px-4 ">
+      <div className="bg-base-200 outline-1 shadow-2xl rounded-2xl p-8 max-w-md w-full z-10">
         <h2 className="text-2xl font-bold mb-6 text-center text-white">Login to Your Account</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
@@ -66,6 +99,7 @@ const Login = () => {
       </div>
     </div>
     <Footer />
+    </motion.div>
     </>
   );
 };

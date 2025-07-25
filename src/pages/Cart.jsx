@@ -1,5 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4,
+      ease: "easeIn",
+    },
+  },
+};
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -44,18 +69,38 @@ const CartPage = () => {
 
   if (cartItems.length === 0) {
     return (
+      <>
+      <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen w-full"
+    >
+      <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center p-6">
         <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
         <Link to="/" className="btn btn-primary">
           Continue Shopping
         </Link>
       </div>
+      </motion.div>
+      </>
     );
   }
 
   return (
+    <>
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen w-full"
+    >
+    <Navbar />
     <div className="p-6 md:p-12">
-      <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
+      <h1 className="text-3xl font-bold mb-6 pt-6">Shopping Cart</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
@@ -107,7 +152,7 @@ const CartPage = () => {
         <div className="bg-base-200 p-6 rounded-xl shadow-sm">
           <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
           <div className="space-y-2">
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-gray-200">
               <span>Total Items:</span>
               <span>{cartItems.reduce((a, b) => a + b.quantity, 0)}</span>
             </div>
@@ -120,6 +165,8 @@ const CartPage = () => {
         </div>
       </div>
     </div>
+    </motion.div>
+    </>
   );
 };
 
