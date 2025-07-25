@@ -5,27 +5,27 @@ import Navbar from "../components/Navbar";
 import Best_Seller from "../components/Best_Seller";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import proteinBar from "../assets/Hero bar.webp";
+import proteinBar from "/images/Hero bar.webp";
 import ScrollRevealProducts from "../components/ScrollRevealProducts";
 import BackgroundLottie from "../components/BackgroundLottie";
 
 const heroContent = [
   {
-    image: "./src/assets/Hero bar.webp",
+    image: "/images/Hero bar.webp",
     spanText: "Energy Bars...",
     spanColor: "text-primary",
     btnShadow: "hover:shadow-[0_0_25px_#f59e0b]",
     link: "/product/4",
   },
   {
-    image: "./src/assets/Hero pack.webp",
+    image: "/images/Hero pack.webp",
     spanText: "Protein Bomb!",
     spanColor: "text-secondary",
     btnShadow: "hover:shadow-[0_0_25px_#9333ea]",
     link: "/product/11",
   },
   {
-    image: "./src/assets/Hero dark.webp",
+    image: "/images/Hero dark.webp",
     spanText: "Mint Chocolate!",
     spanColor: "text-accent",
     btnShadow: "hover:shadow-[0_0_25px_#10b981]",

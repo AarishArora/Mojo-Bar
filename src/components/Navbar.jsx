@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import Logo from "/src/assets/Mojo Bar Logo.webp";
+import Logo from "/images/Mojo Bar Logo.webp";
 import { useAuth } from './AuthContext';
 
 const Navbar = () => {

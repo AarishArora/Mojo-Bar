@@ -4,9 +4,9 @@ import React from 'react'
 const Best_Seller = () => {
 
   const products = [
-    { name: "Orange Dark Chocolate Energy Bar", img: "./src/assets/Hero bar.webp  ", link: "/product/4" },
-    { name: "Turkish Hazelnut Protein Bomb", img: "./src/assets/Hero pack.webp", link: "/product/11" },
-    { name: "Choco Peanut Butter Energy Bar", img: "./src/assets/peanut_bar_png.webp", link: "/product/8" },
+    { name: "Orange Dark Chocolate Energy Bar", img: "/images/Hero bar.webp  ", link: "/product/4" },
+    { name: "Turkish Hazelnut Protein Bomb", img: "/images/Hero pack.webp", link: "/product/11" },
+    { name: "Choco Peanut Butter Energy Bar", img: "/images/peanut_bar_png.webp", link: "/product/8" },
   ];
   
   return (

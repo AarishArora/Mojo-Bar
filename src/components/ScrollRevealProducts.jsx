@@ -5,22 +5,22 @@ const productData = [
   {
     title: "Energy Bars",
     desc: "combines 100% whole grains, nutrient-dense nuts, and real fruit to deliver a balanced energy boost.",
-    image: "./src/assets/Hero bar.webp",
+    image: "/images/Hero bar.webp",
   },
   {
     title: "Protein Bombs",
     desc: "A sweet, guilt-free indulgence perfect for post-gym recovery or afternoon cravings.",
-    image: "./src/assets/Hero pack.webp",
+    image: "/images/Hero pack.webp",
   },
   {
     title: "Dark Chocolate Thin",
     desc: "With 45% cocoa and delicately infused with cool mint and crispy quinoa.",
-    image: "./src/assets/Hero dark.webp",
+    image: "/images/Hero dark.webp",
   },
   {
     title: "Vegan Protein Powder",
     desc: "A clean, plant-powered shake alternative",
-    image: "./src/assets/Sattu_3d.webp",
+    image: "/images/Sattu_3d.webp",
   },
 ];
 
