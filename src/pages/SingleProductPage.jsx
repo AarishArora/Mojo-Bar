@@ -15,7 +15,7 @@ import BarPack2 from "/src/assets/Bar_combo_hover.webp";
 import BarPack3 from "/src/assets/Combo_bar_hover.webp";
 import ChocoBar1 from "/src/assets/bar box 1.webp";
 import ChocoBar2 from "/src/assets/Choco_bar_side.webp";
-import ChocoBar3 from "/src/assets/choco_bar_back.webp";
+import ChocoBar3 from "/src/assets/Choco_bar_back.webp";
 import OrangeBar1 from "/src/assets/OrangeDarkChocolate_pack.webp";
 import OrangeBar2 from "/src/assets/Orange_bar_back.webp";
 import OrangeBar3 from "/src/assets/Orange_bar_side.webp";
